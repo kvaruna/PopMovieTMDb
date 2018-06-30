@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 "Loading. Please wait...", true);
         dialog.show();
         rv_Movies.setAdapter(null);
-        Call<PopularMovies> getPopularMovies = apiMethods.getMovies(getBy,"137f32b794a2c7ff93cc7388723333d9");
+        Call<PopularMovies> getPopularMovies = apiMethods.getMovies(getBy,"API_KEY");
         getPopularMovies.enqueue(new Callback<PopularMovies>() {
             @Override
             public void onResponse(Call<PopularMovies> call, Response<PopularMovies> response) {
