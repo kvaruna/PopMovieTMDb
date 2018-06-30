@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="titleColor">#455A64</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000</color>
+    <color name="titileColor_light">#899ca5</color>
+    <color name="blue_gray_100">#BDBDBD</color>
+    <color name="rounded_border_color">#263238</color>
+    <color name="newcol">#e57373</color>
+    <color name="trasparent_blue">#23A7FF</color>
+    <color name="violet">#7C00ff</color>
+    <color name="violet_dull">#6C3094</color>
+    <color name="default_blue">#2f75aa</color>
+    <color name="bright_blue">#3b9ce5</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="zblue">#003c8e</color>
+</resources>
