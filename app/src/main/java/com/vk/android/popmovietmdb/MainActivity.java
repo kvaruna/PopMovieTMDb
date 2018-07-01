@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
         rv_Movies.setAdapter(null);
         Call<PopularMovies> getPopularMovies = apiMethods.getMovies(getBy,apiKey);
+
         getPopularMovies.enqueue(new Callback<PopularMovies>() {
             @Override
             public void onResponse(Call<PopularMovies> call, Response<PopularMovies> response) {
