@@ -22,10 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/aqleemaregular"
+            android:fontFamily="@font/aqleemamedium"
             android:text="@string/app_name"
             android:textColor="@color/titleColor"
-            android:textSize="24dp"
+            android:textSize="@dimen/margin_24dp"
             android:textStyle="bold" />
 
 
@@ -43,28 +43,25 @@
         android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="8dp"
-        android:paddingRight="8dp"
+        android:paddingBottom="@dimen/padding_8dp"
+        android:paddingRight="@dimen/padding_8dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu_fab_size="normal"
-        fab:menu_backgroundColor="#b984878c"
-        fab:menu_buttonSpacing="0dp"
-        fab:menu_colorNormal="#fcbd5e"
-        fab:menu_colorPressed="#fcbd5e"
-        fab:menu_colorRipple="@color/white"
-        fab:menu_icon="@android:drawable/btn_plus"
-        fab:menu_labels_colorNormal="#d4333333"
-        fab:menu_labels_colorPressed="#444444">
+        app:menu_icon="@android:drawable/ic_menu_sort_by_size"
+        fab:menu_backgroundColor="@color/fabBkg"
+        fab:menu_colorNormal="@color/fabColor"
+        fab:menu_colorPressed="@color/fabColor"
+        fab:menu_colorRipple="@color/white">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/fab_add"
-            app:fab_colorNormal="#fcbd5e"
-            app:fab_colorPressed="#fcbd5e"
+            android:src="@drawable/rating"
+            fab:menu_colorNormal="@color/fabColor"
+            fab:menu_colorPressed="@color/fabColor"
             fab:fab_label="Filter By Rating"
             fab:fab_size="mini" />
 
@@ -72,9 +69,9 @@
             android:id="@+id/fab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/alert_dark_frame"
-            app:fab_colorNormal="#fcbd5e"
-            app:fab_colorPressed="#fcbd5e"
+            android:src="@drawable/popular"
+            app:fab_colorNormal="@color/fabColor"
+            app:fab_colorPressed="@color/fabColor"
             fab:fab_label="Filter By Popularity"
             fab:fab_size="mini" />
 

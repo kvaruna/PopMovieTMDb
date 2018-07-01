@@ -1,14 +1,20 @@
 package com.vk.android.popmovietmdb.Adapters;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -52,8 +58,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         holder.iv_moviePoster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "This is " + movieResults.get(holder.getAdapterPosition()).getTitle(), Toast.LENGTH_SHORT).show();
-                openDetailsInBottomSheet(movieResults.get(holder.getAdapterPosition()));
+                final ObjectAnimator oa1 = ObjectAnimator.ofFloat(holder.card, "scaleX", 1f, 0f);
+                final ObjectAnimator oa2 = ObjectAnimator.ofFloat(holder.card, "scaleX", 0f, 1f);
+                oa1.setInterpolator(new DecelerateInterpolator());
+                oa2.setInterpolator(new AccelerateDecelerateInterpolator());
+                oa1.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        openDetailsInBottomSheet(movieResults.get(holder.getAdapterPosition()));
+                        oa2.start();
+                    }
+                });
+                oa1.start();
             }
         });
     }
@@ -111,7 +128,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         TextView tv_voteAvg;
         @BindView(R.id.tv_voteCount)
         TextView tv_voteCount;
-
+        @BindView(R.id.card)
+        CardView card;
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);

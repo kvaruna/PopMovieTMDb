@@ -14,4 +14,6 @@
     <color name="bright_blue">#3b9ce5</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="zblue">#003c8e</color>
+    <color name="fabColor">#fcbd5e</color>
+    <color name="fabBkg">#b984878c</color>
 </resources>

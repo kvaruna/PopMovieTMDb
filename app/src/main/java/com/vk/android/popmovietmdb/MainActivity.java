@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindString(R.string.popular) String popular;
     @BindString(R.string.top_rating) String rated;
+    @BindString(R.string.loading) String loading;
+    @BindString(R.string.apiKey) String apiKey;
 
     @BindView(R.id.recyclerView)
     RecyclerView rv_Movies;
@@ -73,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void getMovies(String getBy) {
         final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "",
-                "Loading. Please wait...", true);
+                loading, true);
         dialog.show();
         rv_Movies.setAdapter(null);
-        Call<PopularMovies> getPopularMovies = apiMethods.getMovies(getBy,"137f32b794a2c7ff93cc7388723333d9");
+        Call<PopularMovies> getPopularMovies = apiMethods.getMovies(getBy,apiKey);
         getPopularMovies.enqueue(new Callback<PopularMovies>() {
             @Override
             public void onResponse(Call<PopularMovies> call, Response<PopularMovies> response) {
-
                 setUpRecyclerView(response.body().getResults(),dialog);
             }
 

@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/iv_moviePoster"
-        android:layout_width="120dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="@dimen/img_width"
+        android:layout_height="@dimen/img_height"
+        android:layout_marginStart="@dimen/padding_16dp"
+        android:layout_marginTop="@dimen/padding_16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout
@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
         app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
         app:layout_constraintTop_toTopOf="@+id/iv_moviePoster" >
 
@@ -32,12 +32,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:gravity="start"
-            android:fontFamily="@font/latoregular"
-            android:text="Movie Title" />
+            android:text="@string/title"
+            android:fontFamily="@font/latoregular" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="@dimen/margin_2dp"
             android:background="@color/titleColor"/>
         <TextView
             android:id="@+id/tv_movieTitle"
@@ -48,17 +48,16 @@
             android:maxLines="1"
             android:maxWidth="240dp"
             android:textStyle="bold"
-            android:text="Jab We Met"
             android:textColor="@color/titleColor"
-            android:textSize="22sp" />
+            android:textSize="@dimen/font_size22" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linOutTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginTop="@dimen/margin_8dp"
         android:gravity="start"
         android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
@@ -69,9 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:text="@string/releaseDate"
             android:fontFamily="@font/latoregular"
-            android:gravity="start"
-            android:text="Release Date" />
+            android:gravity="start"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
@@ -85,18 +84,17 @@
             android:fontFamily="@font/aqleemaregular"
             android:maxLines="1"
             android:maxWidth="240dp"
-            android:text="1995-20-05"
             android:textColor="@color/titleColor"
-            android:textSize="19sp" />
+            android:textSize="@dimen/font_size19" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linOutThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:paddingEnd="8dp"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:paddingEnd="@dimen/padding_8dp"
         android:gravity="start"
         android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
@@ -107,13 +105,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:text="@string/rating"
             android:fontFamily="@font/latoregular"
-            android:gravity="start"
-            android:text="Rating" />
+            android:gravity="start"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="@dimen/margin_2dp"
             android:background="@color/titleColor"/>
         <RatingBar
             android:id="@+id/ratingBar"
@@ -122,7 +120,7 @@
             android:stepSize="0.5"
             android:rating="2.6"
             android:numStars="10"
-            android:layout_margin="4dp"
+            android:layout_margin="@dimen/margin_4dp"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_gravity="start"
             app:layout_constraintStart_toStartOf="parent"
@@ -133,10 +131,10 @@
         android:id="@+id/linOutFour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginTop="@dimen/margin_8dp"
         android:gravity="start"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -149,9 +147,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:text="@string/overView"
             android:fontFamily="@font/latoregular"
-            android:gravity="start"
-            android:text="Overview" />
+            android:gravity="start" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -165,9 +163,8 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="@font/aqleemaregular"
-            android:padding="4dp"
-            android:text="1995-20-05"
+            android:padding="@dimen/padding_4dp"
             android:textColor="@color/titleColor"
-            android:textSize="17sp" />
+            android:textSize="@dimen/font_size17" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

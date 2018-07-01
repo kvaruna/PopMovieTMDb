@@ -3,4 +3,10 @@
     <string name="base_url_for_poster">https://image.tmdb.org/t/p/w500</string>
     <string name="popular">popular</string>
     <string name="top_rating">top_rated</string>
+    <string name="loading">Loading Please Wait</string>
+    <string name="apiKey">YOUR API KEY</string>
+    <string name="title">Movie Title</string>
+    <string name="releaseDate">Release Date</string>
+    <string name="rating">Rating</string>
+    <string name="overView">Overview</string>
 </resources>
