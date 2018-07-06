@@ -1,170 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/round_corner_backgroud"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/iv_moviePoster"
-        android:layout_width="@dimen/img_width"
-        android:layout_height="@dimen/img_height"
-        android:layout_marginStart="@dimen/padding_16dp"
-        android:layout_marginTop="@dimen/padding_16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <LinearLayout
-        android:id="@+id/linOutOne"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="start"
-        android:layout_marginStart="@dimen/margin_8dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
-        app:layout_constraintTop_toTopOf="@+id/iv_moviePoster" >
-
-        <TextView
-            android:id="@+id/tv_headingTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:gravity="start"
-            android:text="@string/title"
-            android:fontFamily="@font/latoregular" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/margin_2dp"
-            android:background="@color/titleColor"/>
-        <TextView
-            android:id="@+id/tv_movieTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="@font/aqleemaregular"
-            android:maxLines="1"
-            android:maxWidth="240dp"
-            android:textStyle="bold"
-            android:textColor="@color/titleColor"
-            android:textSize="@dimen/font_size22" />
-    </LinearLayout>
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_corner_backgroud">
 
     <LinearLayout
-        android:id="@+id/linOutTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_8dp"
-        android:layout_marginTop="@dimen/margin_8dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
-        app:layout_constraintTop_toBottomOf="@+id/linOutOne">
-
-        <TextView
-            android:id="@+id/tv_headingDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:text="@string/releaseDate"
-            android:fontFamily="@font/latoregular"
-            android:gravity="start"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="2dp"
-            android:background="@color/titleColor"/>
-        <TextView
-            android:id="@+id/tv_relDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="@font/aqleemaregular"
-            android:maxLines="1"
-            android:maxWidth="240dp"
-            android:textColor="@color/titleColor"
-            android:textSize="@dimen/font_size19" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linOutThree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_8dp"
-        android:layout_marginTop="@dimen/margin_8dp"
-        android:paddingEnd="@dimen/padding_8dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
-        app:layout_constraintTop_toBottomOf="@+id/linOutTwo">
-
-        <TextView
-            android:id="@+id/tv_headingRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:text="@string/rating"
-            android:fontFamily="@font/latoregular"
-            android:gravity="start"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/margin_2dp"
-            android:background="@color/titleColor"/>
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:stepSize="0.5"
-            android:rating="2.6"
-            android:numStars="10"
-            android:layout_margin="@dimen/margin_4dp"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:layout_gravity="start"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linOutFour"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_marginStart="@dimen/margin_8dp"
-        android:layout_marginTop="@dimen/margin_8dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_moviePoster">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_headingDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:text="@string/overView"
-            android:fontFamily="@font/latoregular"
-            android:gravity="start" />
-
-        <ImageView
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="2dp"
-            android:background="@color/titleColor" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="@font/aqleemaregular"
-            android:padding="@dimen/padding_4dp"
-            android:textColor="@color/titleColor"
-            android:textSize="@dimen/font_size17" />
+            <ImageView
+                android:id="@+id/iv_moviePoster"
+                android:layout_width="@dimen/img_width"
+                android:layout_height="@dimen/img_height"
+                android:layout_marginStart="@dimen/padding_16dp"
+                android:layout_marginTop="@dimen/padding_16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linOutOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
+                app:layout_constraintTop_toTopOf="@+id/iv_moviePoster">
+
+                <TextView
+                    android:id="@+id/tv_headingTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/latoregular"
+                    android:gravity="start"
+                    android:text="@string/title" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/margin_2dp"
+                    android:background="@color/titleColor" />
+
+                <TextView
+                    android:id="@+id/tv_movieTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/aqleemaregular"
+                    android:maxLines="1"
+                    android:maxWidth="240dp"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/font_size22"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linOutTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
+                app:layout_constraintTop_toBottomOf="@+id/linOutOne">
+
+                <TextView
+                    android:id="@+id/tv_headingDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/latoregular"
+                    android:gravity="start"
+                    android:text="@string/releaseDate" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/titleColor" />
+
+                <TextView
+                    android:id="@+id/tv_relDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/aqleemaregular"
+                    android:maxLines="1"
+                    android:maxWidth="240dp"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/font_size19" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linOutThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:paddingEnd="@dimen/padding_8dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
+                app:layout_constraintTop_toBottomOf="@+id/linOutTwo">
+
+                <TextView
+                    android:id="@+id/tv_headingRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/latoregular"
+                    android:gravity="start"
+                    android:text="@string/rating" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/margin_2dp"
+                    android:background="@color/titleColor" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="@dimen/margin_4dp"
+                    android:numStars="10"
+                    android:rating="2.6"
+                    android:stepSize="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linOutFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_moviePoster">
+
+                <TextView
+                    android:id="@+id/tv_headingDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/latoregular"
+                    android:gravity="start"
+                    android:text="@string/overView" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/titleColor" />
+
+                <TextView
+                    android:id="@+id/tv_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/aqleemaregular"
+                    android:padding="@dimen/padding_4dp"
+                    android:textColor="@color/titleColor"
+                    android:textSize="@dimen/font_size17" />
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

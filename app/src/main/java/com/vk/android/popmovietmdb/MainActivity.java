@@ -2,12 +2,15 @@ package com.vk.android.popmovietmdb;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -27,16 +30,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private APIMethods apiMethods;
-    private Context context;
-    private int numOfColumns = 2;
-    private MoviesAdapter adapter_mv;
-
-    @BindString(R.string.popular) String popular;
-    @BindString(R.string.top_rating) String rated;
-    @BindString(R.string.loading) String loading;
-    @BindString(R.string.apiKey) String apiKey;
-
+    @BindString(R.string.popular)
+    String popular;
+    @BindString(R.string.top_rating)
+    String rated;
+    @BindString(R.string.loading)
+    String loading;
+    String apiKey = BuildConfig.API_KEY;
+    ;
     @BindView(R.id.recyclerView)
     RecyclerView rv_Movies;
     @BindView(R.id.menu)
@@ -45,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab_byRating;
     @BindView(R.id.fab2)
     FloatingActionButton fab_byPopularity;
+    private APIMethods apiMethods;
+    private Context context;
+    private int numOfColumns = 2;
+    private MoviesAdapter adapter_mv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,24 +58,40 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         context = this;
         apiMethods = APIClient.getClient().create(APIMethods.class);
-        getMovies(popular);
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        final boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        if (isConnected) {
+            getMovies(popular);
+        }
+        else Toast.makeText(context, "May Be Something is wrong with your internet.", Toast.LENGTH_SHORT).show();
 
         fab_byRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getMovies(rated);
+                if (isConnected) {
+                    getMovies(rated);
+                }
+                else Toast.makeText(context, "May Be Something is wrong with your internet.", Toast.LENGTH_SHORT).show();
+
                 fabFilter.close(true);
             }
         });
         fab_byPopularity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getMovies(popular);
+                if (isConnected) {
+                    getMovies(popular);
+                }
+                else Toast.makeText(context, "May Be Something is wrong with your internet.", Toast.LENGTH_SHORT).show();
+
                 fabFilter.close(true);
             }
         });
     }
-
 
 
     private void getMovies(String getBy) {
@@ -78,26 +99,26 @@ public class MainActivity extends AppCompatActivity {
                 loading, true);
         dialog.show();
         rv_Movies.setAdapter(null);
-        Call<PopularMovies> getPopularMovies = apiMethods.getMovies(getBy,apiKey);
+        Call<PopularMovies> getPopularMovies = apiMethods.getMovies(getBy, apiKey);
 
         getPopularMovies.enqueue(new Callback<PopularMovies>() {
             @Override
             public void onResponse(Call<PopularMovies> call, Response<PopularMovies> response) {
-                setUpRecyclerView(response.body().getResults(),dialog);
+                setUpRecyclerView(response.body().getResults(), dialog);
             }
 
             @Override
             public void onFailure(Call<PopularMovies> call, Throwable t) {
-                Log.d("This is error",""+t.getMessage());
+                Log.d("This is error", "" + t.getMessage());
             }
         });
     }
 
     private void setUpRecyclerView(List<MovieResult> results, ProgressDialog dialog) {
-        GridLayoutManager layoutManager = new GridLayoutManager(context,numOfColumns);
+        GridLayoutManager layoutManager = new GridLayoutManager(context, numOfColumns);
         rv_Movies.setLayoutManager(layoutManager);
         rv_Movies.setHasFixedSize(true);
-        adapter_mv = new MoviesAdapter(R.layout.layout_movie_poster_item,context,results);
+        adapter_mv = new MoviesAdapter(R.layout.layout_movie_poster_item, context, results);
         rv_Movies.setAdapter(adapter_mv);
         dialog.dismiss();
     }
