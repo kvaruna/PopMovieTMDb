@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.vk.android.popmovietmdb.APIClient.APIClient;
 import com.vk.android.popmovietmdb.APIMethods.APIMethods;
 import com.vk.android.popmovietmdb.Adapters.MoviesAdapter;
@@ -37,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     @BindString(R.string.loading)
     String loading;
     String apiKey = BuildConfig.API_KEY;
-    ;
     @BindView(R.id.recyclerView)
     RecyclerView rv_Movies;
     @BindView(R.id.menu)
@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab_byRating;
     @BindView(R.id.fab2)
     FloatingActionButton fab_byPopularity;
+    @BindView(R.id.spin_kit)
+    SpinKitView loader;
     private APIMethods apiMethods;
     private Context context;
     private int numOfColumns = 2;
@@ -95,16 +97,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getMovies(String getBy) {
-        final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "",
-                loading, true);
-        dialog.show();
+        loader.setVisibility(View.VISIBLE);
         rv_Movies.setAdapter(null);
         Call<PopularMovies> getPopularMovies = apiMethods.getMovies(getBy, apiKey);
 
         getPopularMovies.enqueue(new Callback<PopularMovies>() {
             @Override
             public void onResponse(Call<PopularMovies> call, Response<PopularMovies> response) {
-                setUpRecyclerView(response.body().getResults(), dialog);
+                setUpRecyclerView(response.body().getResults());
             }
 
             @Override
@@ -114,12 +114,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setUpRecyclerView(List<MovieResult> results, ProgressDialog dialog) {
+    public void showLoader(){
+        loader.setVisibility(View.VISIBLE);
+    }
+
+    public void hideLoader(){
+        loader.setVisibility(View.GONE);
+    }
+
+    private void setUpRecyclerView(List<MovieResult> results) {
         GridLayoutManager layoutManager = new GridLayoutManager(context, numOfColumns);
         rv_Movies.setLayoutManager(layoutManager);
         rv_Movies.setHasFixedSize(true);
         adapter_mv = new MoviesAdapter(R.layout.layout_movie_poster_item, context, results);
         rv_Movies.setAdapter(adapter_mv);
-        dialog.dismiss();
+        loader.setVisibility(View.GONE);
     }
 }

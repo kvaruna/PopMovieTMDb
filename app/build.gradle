@@ -60,9 +60,6 @@ dependencies {
     }
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.7.1'
 
-    //Shimmer Effect
-    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
-
     //For Fab
     implementation 'com.github.clans:fab:1.6.4'
 
@@ -70,4 +67,11 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     //Intro
     implementation 'com.airbnb.android:lottie:2.5.5'
+
+    //Loader
+    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
+
+    //ExpandableTextView
+    implementation 'at.blogc:expandabletextview:1.0.5'
+
 }

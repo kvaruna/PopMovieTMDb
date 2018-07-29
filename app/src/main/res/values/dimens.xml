@@ -18,4 +18,5 @@
     <dimen name="font_size24">24sp</dimen>
     <dimen name="font_size17">17sp</dimen>
     <dimen name="font_size12">12sp</dimen>
+    <dimen name="line_width01">1dp</dimen>
 </resources>

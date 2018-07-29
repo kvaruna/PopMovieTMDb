@@ -141,11 +141,109 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linOut4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_8dp"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                app:layout_constraintBottom_toTopOf="@+id/linOutFour"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_moviePoster">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/fav"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/nfav"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:id="@+id/fav_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/latoregular"
+                        android:text="@string/add_favourite"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/trailer"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:clickable="true"
+                        android:src="@drawable/trailer"
+                        android:layout_weight="1"
+                        android:focusable="true" />
+                    <TextView
+                        android:id="@+id/play_trailer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/latoregular"
+                        android:text="@string/watch_trailer"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/share"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/share"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:id="@+id/share_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/latoregular"
+                        android:text="@string/share"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/reviews"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ratings"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:id="@+id/reviews_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/latoregular"
+                        android:text="@string/review"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/linOutFour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_16dp"
-                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="@dimen/margin_8dp"
                 android:layout_marginStart="@dimen/margin_8dp"
                 android:layout_marginTop="@dimen/margin_8dp"
                 android:gravity="start"
@@ -153,7 +251,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_moviePoster">
+                app:layout_constraintTop_toBottomOf="@+id/linOut4">
 
                 <TextView
                     android:id="@+id/tv_headingDesc"
@@ -180,6 +278,7 @@
                     android:textColor="@color/titleColor"
                     android:textSize="@dimen/font_size17" />
             </LinearLayout>
+
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 </ScrollView>
