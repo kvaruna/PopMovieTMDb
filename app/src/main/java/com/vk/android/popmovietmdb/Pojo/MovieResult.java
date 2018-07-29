@@ -52,7 +52,7 @@ public class MovieResult implements Parcelable{
     @Expose
     private String releaseDate;
 
-    protected MovieResult(Parcel in) {
+    public MovieResult(Parcel in) {
         if (in.readByte() == 0) {
             voteCount = null;
         } else {
@@ -97,6 +97,18 @@ public class MovieResult implements Parcelable{
             return new MovieResult[size];
         }
     };
+
+    public MovieResult(int anInt, String title, String overview, String posterPath, double rating, int totalVotes, String relDate) {
+        this.id = id;
+        this.title = title;
+        this.overview = overview;
+        this.posterPath = posterPath;
+        this.voteAverage = rating;
+        this.voteCount = totalVotes;
+        this.releaseDate = relDate;
+
+
+    }
 
     public Integer getVoteCount() {
         return voteCount;

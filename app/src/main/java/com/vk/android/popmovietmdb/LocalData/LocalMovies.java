@@ -11,8 +11,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
-import static com.vk.android.popmovietmdb.LocalData.MoviesLocalData.MoviesDetails.TABLE_NAME;
+import static com.vk.android.popmovietmdb.LocalData.MoviesContractLocalData.MoviesDetails.TABLE_NAME;
 
 public class LocalMovies extends ContentProvider{
     public static final int MOVIES = 100;
@@ -23,8 +24,8 @@ public class LocalMovies extends ContentProvider{
 
     public static UriMatcher buildUriMatcher() {
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(MoviesLocalData.CONTENT_AUTH, MoviesLocalData.MOVIES_PATH, MOVIES);
-        uriMatcher.addURI(MoviesLocalData.CONTENT_AUTH, MoviesLocalData.MOVIES_PATH + "/#", MOVIE_WITH_ID);
+        uriMatcher.addURI(MoviesContractLocalData.CONTENT_AUTH, MoviesContractLocalData.MOVIES_PATH, MOVIES);
+        uriMatcher.addURI(MoviesContractLocalData.CONTENT_AUTH, MoviesContractLocalData.MOVIES_PATH + "/#", MOVIE_WITH_ID);
 
         return uriMatcher;
     }
@@ -75,7 +76,7 @@ public class LocalMovies extends ContentProvider{
             case MOVIES:
                 long id = dbHelper.getWritableDatabase().insert(TABLE_NAME, null, values);
                 if (id > 0) {
-                    resultUri = ContentUris.withAppendedId(MoviesLocalData.MoviesDetails.CONTENT_URI, id);
+                    resultUri = ContentUris.withAppendedId(MoviesContractLocalData.MoviesDetails.CONTENT_URI, id);
                 } else {
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 }
@@ -84,7 +85,7 @@ public class LocalMovies extends ContentProvider{
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
         getContext().getContentResolver().notifyChange(resultUri, null);
-
+        Log.d("Uri is ","So -=====" + resultUri);
         return resultUri;
     }
 

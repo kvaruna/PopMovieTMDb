@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -33,7 +32,7 @@ import com.bumptech.glide.Glide;
 import com.vk.android.popmovietmdb.APIClient.APIClient;
 import com.vk.android.popmovietmdb.APIMethods.APIMethods;
 import com.vk.android.popmovietmdb.BuildConfig;
-import com.vk.android.popmovietmdb.LocalData.MoviesLocalData;
+import com.vk.android.popmovietmdb.LocalData.MoviesContractLocalData;
 import com.vk.android.popmovietmdb.MainActivity;
 import com.vk.android.popmovietmdb.Pojo.MovieResult;
 import com.vk.android.popmovietmdb.Pojo.MovieTrailers;
@@ -186,7 +185,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     private boolean isAddedToFav(Integer id) {
         final Cursor cursor;
-        cursor = context.getContentResolver().query(MoviesLocalData.MoviesDetails.CONTENT_URI, null, "movie_id=?", new String[]{String.valueOf(id)}, null);
+        cursor = context.getContentResolver().query(MoviesContractLocalData.MoviesDetails.CONTENT_URI, null, "movie_id=?", new String[]{String.valueOf(id)}, null);
 
         boolean result = cursor.getCount() > 0;
         cursor.close();
@@ -311,7 +310,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     private void setFavStatus(ImageView iv_fav, MovieResult movieResult, TextView tv_fav_text) {
         if (isFavourite) {
-            Uri uri = MoviesLocalData.MoviesDetails.CONTENT_URI;
+            Uri uri = MoviesContractLocalData.MoviesDetails.CONTENT_URI;
             uri = uri.buildUpon().appendPath(String.valueOf(movieResult.getId())).build();
             int returnUri = context.getContentResolver().delete(uri, null, null);
             context.getContentResolver().notifyChange(uri, null);
@@ -327,14 +326,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             Toast.makeText(context.getApplicationContext(), movieResult.getTitle() + " Removed From Favourites.", Toast.LENGTH_SHORT).show();
         } else {
             ContentValues contentValues = new ContentValues();
-            contentValues.put(MoviesLocalData.MoviesDetails.COLUMN_ID, movieResult.getId());
-            contentValues.put(MoviesLocalData.MoviesDetails.COLUMN_TITLE, movieResult.getTitle());
-            contentValues.put(MoviesLocalData.MoviesDetails.COLUMN_OVERVIEW, movieResult.getOverview());
-            contentValues.put(MoviesLocalData.MoviesDetails.COLUMN_PATH_POSTER, movieResult.getPosterPath());
-            contentValues.put(MoviesLocalData.MoviesDetails.COLUMN_RELEASE_DATE, movieResult.getReleaseDate());
+            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_ID, movieResult.getId());
+            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_TITLE, movieResult.getTitle());
+            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_OVERVIEW, movieResult.getOverview());
+            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_PATH_POSTER, movieResult.getPosterPath());
+            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_RELEASE_DATE, movieResult.getReleaseDate());
+            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_RATING,movieResult.getVoteAverage());
+            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_TOTAL_VOTES,movieResult.getVoteCount());
 
 
-            Uri uri = context.getContentResolver().insert(MoviesLocalData.MoviesDetails.CONTENT_URI, contentValues);
+            Uri uri = context.getContentResolver().insert(MoviesContractLocalData.MoviesDetails.CONTENT_URI, contentValues);
             if (uri != null) {
                 isFavourite = !isFavourite;
                 if (isFavourite) {

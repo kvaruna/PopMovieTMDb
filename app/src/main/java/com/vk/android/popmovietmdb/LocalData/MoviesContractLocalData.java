@@ -3,7 +3,7 @@ package com.vk.android.popmovietmdb.LocalData;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-public class MoviesLocalData {
+public class MoviesContractLocalData {
     public static final String CONTENT_AUTH = "com.vk.android.popmovietmdb";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTH);
     public static final String MOVIES_PATH = "movies";
@@ -20,7 +20,10 @@ public class MoviesLocalData {
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_OVERVIEW = "overview";
         public static final String COLUMN_PATH_POSTER = "path_poster";
+        public static final String COLUMN_TOTAL_VOTES = "vote_count";
         public static final String COLUMN_RELEASE_DATE = "release_date";
+        public static final String COLUMN_RATING = "vote_average";
+
 
     }
 }
