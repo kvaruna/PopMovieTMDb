@@ -20,7 +20,6 @@ public class MoviesContractLocalData {
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_OVERVIEW = "overview";
         public static final String COLUMN_PATH_POSTER = "path_poster";
-        public static final String COLUMN_TOTAL_VOTES = "vote_count";
         public static final String COLUMN_RELEASE_DATE = "release_date";
         public static final String COLUMN_RATING = "vote_average";
 

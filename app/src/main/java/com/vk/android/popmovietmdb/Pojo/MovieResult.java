@@ -98,13 +98,12 @@ public class MovieResult implements Parcelable{
         }
     };
 
-    public MovieResult(int anInt, String title, String overview, String posterPath, double rating, int totalVotes, String relDate) {
+    public MovieResult(int anInt, String title, String overview, String posterPath, double rating, String relDate) {
         this.id = id;
         this.title = title;
         this.overview = overview;
         this.posterPath = posterPath;
         this.voteAverage = rating;
-        this.voteCount = totalVotes;
         this.releaseDate = relDate;
 
 

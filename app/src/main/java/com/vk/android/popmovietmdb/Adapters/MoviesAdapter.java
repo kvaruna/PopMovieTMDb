@@ -331,8 +331,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_OVERVIEW, movieResult.getOverview());
             contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_PATH_POSTER, movieResult.getPosterPath());
             contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_RELEASE_DATE, movieResult.getReleaseDate());
-            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_RATING,movieResult.getVoteAverage());
-            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_TOTAL_VOTES,movieResult.getVoteCount());
+            contentValues.put(MoviesContractLocalData.MoviesDetails.COLUMN_RATING, movieResult.getVoteAverage());
 
 
             Uri uri = context.getContentResolver().insert(MoviesContractLocalData.MoviesDetails.CONTENT_URI, contentValues);
